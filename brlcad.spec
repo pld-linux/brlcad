@@ -25,14 +25,17 @@ BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXt-devel
 BuildRequires:	xorg-lib-libSM-devel
+# for AC
+#BuildRequires:	X11-devel
 #
 BuildRequires:	tcl-devel
 BuildRequires:	tk-devel
-Buildrequires:	itcl-devel
-BuildRequires:	itk-devel
+#Buildrequires:	itcl-devel
+#BuildRequires:	itk-devel
 Buildrequires:	python
 BuildRequires:	SDL-devel
-BuildRequires:	tk-Img-devel
+#BuildRequires:	tk-Img-devel
+
 #Requires(postun):	-
 #Requires(pre,post):	-
 #Requires(preun):	-
@@ -113,9 +116,9 @@ Statyczna biblioteka ....
     --disable-zlib-build \
     --disable-png-build \
     --disable-tcl-build \
-    --disable-itcl-build \
-    --disable-itk-build \
-    --disable-tkimg-build
+    --enable-itcl-build \
+    --enable-itk-build \
+    --enable-tkimg-build
 #{__make}
 
 #%{__make} \
