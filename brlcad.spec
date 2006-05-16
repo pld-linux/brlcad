@@ -1,7 +1,5 @@
 #
-# Conditional build:
-%bcond_with	tests		# build with tests
-%bcond_without	tests		# build without tests
+# TODO - build with system libs: 
 #
 Summary:	BRL CAD
 Summary(pl):	BRL CAD
@@ -12,11 +10,7 @@ License:	GPL
 Group:		Applications/CAD
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 # Source0-md5:	bb4c5fd83ae1dd1b5dd84384f7894fc8
-#Source1:	-
-# Source1-md5:	-
-#Patch0:		%{name}-DESTDIR.patch
 URL:		htp://brlcad.sourceforge.net/
-#BuildRequires:	-
 #for TH
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libX11-devel
@@ -41,11 +35,8 @@ BuildRequires:	SDL-devel
 #Requires(preun):	-
 #Requires:	-
 #Provides:	-
-#Provides:	group(foo)
-#Provides:	user(foo)
 #Obsoletes:	-
 #Conflicts:	-
-#BuildArch:	noarch
 #ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -99,16 +90,6 @@ Statyczna biblioteka ....
 
 %prep
 %setup -q
-#%setup -q -c -T
-#%setup -q -n %{name}
-#%%setup -q -n %{name}-%{version}.orig -a 1
-#%patch0 -p1
-
-# undos the source
-#find '(' -name '*.php' -o -name '*.inc' ')' -print0 | xargs -0 sed -i -e 's,\r$,,'
-
-# remove CVS control files
-#find -name CVS -print0 | xargs -0 rm -rf
 
 %build
 #/autogen.sh
@@ -125,6 +106,8 @@ Statyczna biblioteka ....
 	--disable-profiling \
 	--enable-optimized \
 	--with-gnu-ld \
+	--prefix=/usr \
+	--exec-prefix=/usr \
 	--bindir=%{_bindir} \
 	--sbindir=%{_sbindir} \
 	--datadir=%{_datadir} \
@@ -138,60 +121,28 @@ Statyczna biblioteka ....
 
 %install
 rm -rf $RPM_BUILD_ROOT
-# create directories if necessary
-#install -d $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	DESTIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%pre
-
-%post
-
-%preun
-
-%postun
-
-%if %{with ldconfig}
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
-%endif
-
-%if %{with initscript}
-%post init
-/sbin/chkconfig --add %{name}
-%service %{name} restart
-
-%preun init
-if [ "$1" = "0" ]; then
-	%service -q %{name} stop
-	/sbin/chkconfig --del %{name}
-fi
-%endif
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
-
-%if 0
-# if _sysconfdir != /etc:
-#%%dir %{_sysconfdir}
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
-%attr(755,root,root) %{_bindir}/*
+#doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
+%{_bindir}/*
+%{_mandir}/man?/*
+%{_includedir}/*.h
+%{_includedir}/brlcad
+%{_libdir}/*
+#%%{_libdir}/tk8.4
+#%%{_libdir}/iwidgets4.0.1
 %{_datadir}/%{name}
-%endif
 
-# initscript and its config
-%if %{with initscript}
-%attr(754,root,root) /etc/rc.d/init.d/%{name}
-%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
-%endif
-
-#%{_examplesdir}/%{name}-%{version}
 
 %if %{with subpackage}
 %files subpackage
