@@ -113,13 +113,24 @@ Statyczna biblioteka ....
 %build
 #/autogen.sh
 %configure \
-    --disable-zlib-build \
-    --disable-png-build \
-    --disable-tcl-build \
-    --enable-itcl-build \
-    --enable-itk-build \
-    --enable-tkimg-build
-#{__make}
+	--disable-blt-build \
+	--disable-itcl-build \
+	--disable-itk-build \
+	--disable-png-build \
+	--disable-regex-build \
+	--disable-tcl-build \
+	--disable-tkimg-build \
+	--disable-zlib-build \
+	--disable-debug \
+	--disable-profiling \
+	--enable-optimized \
+	--with-gnu-ld \
+	--bindir=%{_bindir} \
+	--sbindir=%{_sbindir} \
+	--datadir=%{_datadir} \
+	--mandir=%{_mandir} \
+	--sysconfdir=%{_sysconfdir}
+%{__make}
 
 #%{__make} \
 #	CFLAGS="%{rpmcflags}" \
