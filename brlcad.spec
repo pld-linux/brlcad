@@ -17,16 +17,22 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 #Patch0:		%{name}-DESTDIR.patch
 URL:		htp://brlcad.sourceforge.net/
 #BuildRequires:	-
-#BuildRequires:	autoconf
-#BuildRequires:	automake
-#BuildRequires:	intltool
-#BuildRequires:	libtool
+#for TH
+BuildRequires:	xorg-lib-libICE-devel
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xorg-lib-libXi-devel
+BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libXt-devel
+BuildRequires:	xorg-lib-libSM-devel
+#
 BuildRequires:	tcl-devel
 BuildRequires:	tk-devel
 Buildrequires:	itcl-devel
 BuildRequires:	itk-devel
 Buildrequires:	python
 BuildRequires:	SDL-devel
+BuildRequires:	tk-Img-devel
 #Requires(postun):	-
 #Requires(pre,post):	-
 #Requires(preun):	-
@@ -102,17 +108,14 @@ Statyczna biblioteka ....
 #find -name CVS -print0 | xargs -0 rm -rf
 
 %build
-# if ac/am/* rebuilding is necessary, do it in this order and add
-# appropriate BuildRequires
-#%%{__intltoolize}
-#%%{__gettextize}
-#%%{__libtoolize}
-#%%{__aclocal}
-#%%{__autoconf}
-#%%{__autoheader}
-#%%{__automake}
-#cp -f /usr/share/automake/config.sub .
-%configure
+#/autogen.sh
+%configure \
+    --disable-zlib-build \
+    --disable-png-build \
+    --disable-tcl-build \
+    --disable-itcl-build \
+    --disable-itk-build \
+    --disable-tkimg-build
 #{__make}
 
 #%{__make} \
