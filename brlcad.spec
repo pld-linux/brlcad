@@ -15,16 +15,18 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 #Source1:	-
 # Source1-md5:	-
 #Patch0:		%{name}-DESTDIR.patch
-URL:		-
-%if %{with initscript}
-BuildRequires:	rpmbuild(macros) >= 1.228
-Requires(post,preun):	/sbin/chkconfig
-%endif
+URL:		htp://brlcad.sourceforge.net/
 #BuildRequires:	-
 #BuildRequires:	autoconf
 #BuildRequires:	automake
 #BuildRequires:	intltool
 #BuildRequires:	libtool
+BuildRequires:	tcl-devel
+BuildRequires:	tk-devel
+Buildrequires:	itcl-devel
+BuildRequires:	itk-devel
+Buildrequires:	python
+BuildRequires:	SDL-devel
 #Requires(postun):	-
 #Requires(pre,post):	-
 #Requires(preun):	-
@@ -39,6 +41,7 @@ Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+The BRL-CAD package is a powerful Constructive Solid Geometry (CSG) solid modeling system with over 20 years development and production use by the U.S. military. BRL-CAD includes an interactive geometry editor, parallel ray-tracing support for rendering and geometric analysis, path-tracing for realistic image synthesis, network distributed framebuffer support, image-processing and signal-processing tools. The entire package is distributed in source code form.
 
 %description -l pl
 
@@ -110,7 +113,7 @@ Statyczna biblioteka ....
 #%%{__automake}
 #cp -f /usr/share/automake/config.sub .
 %configure
-%{__make}
+#{__make}
 
 #%{__make} \
 #	CFLAGS="%{rpmcflags}" \
