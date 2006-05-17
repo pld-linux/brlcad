@@ -1,11 +1,13 @@
 #
-# TODO - build with system libs: 
+# TODO 
+#	- build with system libs: 
+#	
 #
 Summary:	BRL CAD
 Summary(pl):	BRL CAD
 Name:		brlcad
 Version:	7.8.0
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Applications/CAD
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
@@ -136,17 +138,17 @@ rm -rf $RPM_BUILD_ROOT
 #doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
 %{_bindir}/*
 %{_mandir}/man?/*
-%{_includedir}/*.h
+#{_includedir}/*.h
 %{_includedir}/brlcad
 %{_libdir}/*
 #%%{_libdir}/tk8.4
 #%%{_libdir}/iwidgets4.0.1
 %{_datadir}/%{name}
 
-
-%if %{with subpackage}
-%files subpackage
+%files devel
 %defattr(644,root,root,755)
-#%doc extras/*.gz
-#%{_datadir}/%{name}-ext
-%endif
+%{_includedir}/*.h
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/*.la
