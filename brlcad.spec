@@ -14,15 +14,15 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 # Source0-md5:	bb4c5fd83ae1dd1b5dd84384f7894fc8
 URL:		htp://brlcad.sourceforge.net/
 #for TH
-BuildRequires:	xorg-lib-libICE-devel
-BuildRequires:	xorg-lib-libX11-devel
-BuildRequires:	xorg-lib-libXext-devel
-BuildRequires:	xorg-lib-libXi-devel
-BuildRequires:	xorg-lib-libXmu-devel
-BuildRequires:	xorg-lib-libXt-devel
-BuildRequires:	xorg-lib-libSM-devel
+#BuildRequires:	xorg-lib-libICE-devel
+#BuildRequires:	xorg-lib-libX11-devel
+#BuildRequires:	xorg-lib-libXext-devel
+#BuildRequires:	xorg-lib-libXi-devel
+#BuildRequires:	xorg-lib-libXmu-devel
+#BuildRequires:	xorg-lib-libXt-devel
+#BuildRequires:	xorg-lib-libSM-devel
 # for AC
-#BuildRequires:	X11-devel
+BuildRequires:	X11-devel
 #
 BuildRequires:	tcl-devel
 BuildRequires:	tk-devel
@@ -139,7 +139,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %{_mandir}/man?/*
 #{_includedir}/*.h
-%{_includedir}/brlcad
 %{_libdir}/*
 #%%{_libdir}/tk8.4
 #%%{_libdir}/iwidgets4.0.1
@@ -147,6 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%{_includedir}/brlcad
 %{_includedir}/*.h
 
 %files static
