@@ -1,18 +1,18 @@
 #
 # TODO 
+#	- files fixes, what is -static?
 #	- build with system libs: 
-#	
 #
-Summary:	BRL CAD
-Summary(pl):	BRL CAD
+Summary:	BRL CAD - solid modeling system
+Summary(pl):	BRL CAD - system modelowania bry³
 Name:		brlcad
 Version:	7.8.0
 Release:	0.2
 License:	GPL
-Group:		Applications/CAD
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Group:		X11/Applications/Graphics
+Source0:	http://dl.sourceforge.net/brlcad/%{name}-%{version}.tar.bz2
 # Source0-md5:	bb4c5fd83ae1dd1b5dd84384f7894fc8
-URL:		htp://brlcad.sourceforge.net/
+URL:		http://brlcad.sourceforge.net/
 #for TH
 #BuildRequires:	xorg-lib-libICE-devel
 #BuildRequires:	xorg-lib-libX11-devel
@@ -22,73 +22,59 @@ URL:		htp://brlcad.sourceforge.net/
 #BuildRequires:	xorg-lib-libXt-devel
 #BuildRequires:	xorg-lib-libSM-devel
 # for AC
-BuildRequires:	X11-devel
+BuildRequires:	XFree86-devel
 #
-BuildRequires:	tcl-devel
-BuildRequires:	tk-devel
+BuildRequires:	SDL-devel
 #Buildrequires:	itcl-devel
 #BuildRequires:	itk-devel
-Buildrequires:	python
-BuildRequires:	SDL-devel
+BuildRequires:	python
+BuildRequires:	tcl-devel
+BuildRequires:	tk-devel
 #BuildRequires:	tk-Img-devel
-
-#Requires(postun):	-
-#Requires(pre,post):	-
-#Requires(preun):	-
-#Requires:	-
-#Provides:	-
-#Obsoletes:	-
-#Conflicts:	-
-#ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The BRL-CAD package is a powerful Constructive Solid Geometry (CSG) solid modeling system with over 20 years development and production use by the U.S. military. BRL-CAD includes an interactive geometry editor, parallel ray-tracing support for rendering and geometric analysis, path-tracing for realistic image synthesis, network distributed framebuffer support, image-processing and signal-processing tools. The entire package is distributed in source code form.
+The BRL-CAD package is a powerful Constructive Solid Geometry (CSG)
+solid modeling system with over 20 years development and production
+use by the U.S. military. BRL-CAD includes an interactive geometry
+editor, parallel ray-tracing support for rendering and geometric
+analysis, path-tracing for realistic image synthesis, network
+distributed framebuffer support, image-processing and
+signal-processing tools. The entire package is distributed in source
+code form.
 
 %description -l pl
-
-%package subpackage
-Summary:	-
-Summary(pl):	-
-Group:		-
-
-%description subpackage
-
-%description subpackage -l pl
-
-%package libs
-Summary:	-
-Summary(pl):	-
-Group:		Libraries
-
-%description libs
-
-%description libs -l pl
-
+BRL-CAD to potê¿ny system modelowania bry³ CSG (Constructive Solid
+Geometry) rozwijany i u¿ywany produkcyjnie od ponad 20 lat w
+amerykañskim wojsku. BRL-CAD zawiera interaktywny edytor geometryczny,
+obs³ugê równoleg³ego ray-tracingu do renderowania i analizy
+geometrycznej, path-tracing do realistycznej syntezy obrazu, obs³ugê
+rozproszonego framebuffera po sieci oraz narzêdzia do przetwarzania
+obrazu i sygna³u. Ca³y pakiet jest dostêpny z kodem ¼ród³owym.
 
 %package devel
-Summary:	Header files for ... library
-Summary(pl):	Pliki nag³ówkowe biblioteki ...
+Summary:	Header files for BRL-CAD
+Summary(pl):	Pliki nag³ówkowe pakietu BRL-CAD
 Group:		Development/Libraries
 #Requires:	%{name} = %{version}-%{release}
 
 %description devel
-This is the package containing the header files for ... library.
+This is the package containing the header files for BRL-CAD.
 
 %description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe biblioteki ....
+Ten pakiet zawiera pliki nag³ówkowe pakietu BRL-CAD.
 
 %package static
-Summary:	Static ... library
-Summary(pl):	Statyczna biblioteka ...
+Summary:	Static BRL-CAD library
+Summary(pl):	Statyczna biblioteka BRL-CAD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static ... library.
+Static BRL-CAD library.
 
 %description static -l pl
-Statyczna biblioteka ....
+Statyczna biblioteka BRL-CAD.
 
 %prep
 %setup -q
@@ -137,12 +123,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 #doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
 %{_bindir}/*
-%{_mandir}/man?/*
-#{_includedir}/*.h
 %{_libdir}/*
 #%%{_libdir}/tk8.4
 #%%{_libdir}/iwidgets4.0.1
 %{_datadir}/%{name}
+%{_mandir}/man?/*
 
 %files devel
 %defattr(644,root,root,755)
