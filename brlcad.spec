@@ -3,27 +3,30 @@
 #	- files fixes, what is -static?
 #	- build with system libs: 
 #
+%bcond_with	th	# build in TH builder
+
 Summary:	BRL CAD - solid modeling system
 Summary(pl):	BRL CAD - system modelowania bry³
 Name:		brlcad
-Version:	7.8.0
-Release:	0.2
+Version:	7.8.2
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/brlcad/%{name}-%{version}.tar.bz2
-# Source0-md5:	bb4c5fd83ae1dd1b5dd84384f7894fc8
+# Source0-md5:	38854509545cb4a1b037d1ac47aac731
 URL:		http://brlcad.sourceforge.net/
-#for TH
-#BuildRequires:	xorg-lib-libICE-devel
-#BuildRequires:	xorg-lib-libX11-devel
-#BuildRequires:	xorg-lib-libXext-devel
-#BuildRequires:	xorg-lib-libXi-devel
-#BuildRequires:	xorg-lib-libXmu-devel
-#BuildRequires:	xorg-lib-libXt-devel
-#BuildRequires:	xorg-lib-libSM-devel
-# for AC
+%if %{with th}
+BuildRequires:	xorg-lib-libICE-devel
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xorg-lib-libXi-devel
+BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libXt-devel
+BuildRequires:	xorg-lib-libSM-devel
+%else
 BuildRequires:	XFree86-devel
-#
+%endif
+
 BuildRequires:	SDL-devel
 #Buildrequires:	itcl-devel
 #BuildRequires:	itk-devel
