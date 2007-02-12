@@ -6,7 +6,7 @@
 %bcond_with	th	# build in TH builder
 
 Summary:	BRL CAD - solid modeling system
-Summary(pl):	BRL CAD - system modelowania bry³
+Summary(pl.UTF-8):   BRL CAD - system modelowania bryÅ‚
 Name:		brlcad
 Version:	7.8.2
 Release:	0.1
@@ -46,37 +46,37 @@ distributed framebuffer support, image-processing and
 signal-processing tools. The entire package is distributed in source
 code form.
 
-%description -l pl
-BRL-CAD to potê¿ny system modelowania bry³ CSG (Constructive Solid
-Geometry) rozwijany i u¿ywany produkcyjnie od ponad 20 lat w
-amerykañskim wojsku. BRL-CAD zawiera interaktywny edytor geometryczny,
-obs³ugê równoleg³ego ray-tracingu do renderowania i analizy
-geometrycznej, path-tracing do realistycznej syntezy obrazu, obs³ugê
-rozproszonego framebuffera po sieci oraz narzêdzia do przetwarzania
-obrazu i sygna³u. Ca³y pakiet jest dostêpny z kodem ¼ród³owym.
+%description -l pl.UTF-8
+BRL-CAD to potÄ™Å¼ny system modelowania bryÅ‚ CSG (Constructive Solid
+Geometry) rozwijany i uÅ¼ywany produkcyjnie od ponad 20 lat w
+amerykaÅ„skim wojsku. BRL-CAD zawiera interaktywny edytor geometryczny,
+obsÅ‚ugÄ™ rÃ³wnolegÅ‚ego ray-tracingu do renderowania i analizy
+geometrycznej, path-tracing do realistycznej syntezy obrazu, obsÅ‚ugÄ™
+rozproszonego framebuffera po sieci oraz narzÄ™dzia do przetwarzania
+obrazu i sygnaÅ‚u. CaÅ‚y pakiet jest dostÄ™pny z kodem ÅºrÃ³dÅ‚owym.
 
 %package devel
 Summary:	Header files for BRL-CAD
-Summary(pl):	Pliki nag³ówkowe pakietu BRL-CAD
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe pakietu BRL-CAD
 Group:		Development/Libraries
 #Requires:	%{name} = %{version}-%{release}
 
 %description devel
 This is the package containing the header files for BRL-CAD.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe pakietu BRL-CAD.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe pakietu BRL-CAD.
 
 %package static
 Summary:	Static BRL-CAD library
-Summary(pl):	Statyczna biblioteka BRL-CAD
+Summary(pl.UTF-8):   Statyczna biblioteka BRL-CAD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static BRL-CAD library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka BRL-CAD.
 
 %prep
