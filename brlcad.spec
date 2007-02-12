@@ -6,7 +6,7 @@
 %bcond_with	th	# build in TH builder
 
 Summary:	BRL CAD - solid modeling system
-Summary(pl.UTF-8):   BRL CAD - system modelowania brył
+Summary(pl.UTF-8):	BRL CAD - system modelowania brył
 Name:		brlcad
 Version:	7.8.2
 Release:	0.1
@@ -57,7 +57,7 @@ obrazu i sygnału. Cały pakiet jest dostępny z kodem źródłowym.
 
 %package devel
 Summary:	Header files for BRL-CAD
-Summary(pl.UTF-8):   Pliki nagłówkowe pakietu BRL-CAD
+Summary(pl.UTF-8):	Pliki nagłówkowe pakietu BRL-CAD
 Group:		Development/Libraries
 #Requires:	%{name} = %{version}-%{release}
 
@@ -69,7 +69,7 @@ Ten pakiet zawiera pliki nagłówkowe pakietu BRL-CAD.
 
 %package static
 Summary:	Static BRL-CAD library
-Summary(pl.UTF-8):   Statyczna biblioteka BRL-CAD
+Summary(pl.UTF-8):	Statyczna biblioteka BRL-CAD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
