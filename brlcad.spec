@@ -76,8 +76,7 @@ Statyczna biblioteka BRL-CAD.
 %setup -q
 
 %build
-#/autogen.sh
-%configure \
+%configure2_13 \
 	--disable-blt-build \
 	--disable-itcl-build \
 	--disable-itk-build \
