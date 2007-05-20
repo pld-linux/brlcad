@@ -6,12 +6,12 @@
 Summary:	BRL CAD - solid modeling system
 Summary(pl.UTF-8):	BRL CAD - system modelowania brył
 Name:		brlcad
-Version:	7.8.2
+Version:	7.10.0
 Release:	0.1
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/brlcad/%{name}-%{version}.tar.bz2
-# Source0-md5:	38854509545cb4a1b037d1ac47aac731
+# Source0-md5:	0b6f4fe6b3466ac5c4afac26dfa43f7d
 URL:		http://brlcad.sourceforge.net/
 BuildRequires:	SDL-devel
 #Buildrequires:	itcl-devel
@@ -97,10 +97,6 @@ Statyczna biblioteka BRL-CAD.
 	--mandir=%{_mandir} \
 	--sysconfdir=%{_sysconfdir}
 %{__make}
-
-#%{__make} \
-#	CFLAGS="%{rpmcflags}" \
-#	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
