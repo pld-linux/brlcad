@@ -13,13 +13,6 @@ Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/brlcad/%{name}-%{version}.tar.bz2
 # Source0-md5:	38854509545cb4a1b037d1ac47aac731
 URL:		http://brlcad.sourceforge.net/
-BuildRequires:	xorg-lib-libICE-devel
-BuildRequires:	xorg-lib-libX11-devel
-BuildRequires:	xorg-lib-libXext-devel
-BuildRequires:	xorg-lib-libXi-devel
-BuildRequires:	xorg-lib-libXmu-devel
-BuildRequires:	xorg-lib-libXt-devel
-BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	SDL-devel
 #Buildrequires:	itcl-devel
 #BuildRequires:	itk-devel
@@ -27,6 +20,13 @@ BuildRequires:	python
 BuildRequires:	tcl-devel
 BuildRequires:	tk-devel
 #BuildRequires:	tk-Img-devel
+BuildRequires:	xorg-lib-libICE-devel
+BuildRequires:	xorg-lib-libSM-devel
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xorg-lib-libXi-devel
+BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libXt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
