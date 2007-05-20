@@ -1,0 +1,73 @@
+diff -ur brlcad-7.10.0.orig/configure.ac brlcad-7.10.0/configure.ac
+--- brlcad-7.10.0.orig/configure.ac	2007-04-10 01:53:41.000000000 +0000
++++ brlcad-7.10.0/configure.ac	2007-05-20 13:04:35.000000000 +0000
+@@ -1487,7 +1487,7 @@
+ AC_HEADER_SYS_WAIT
+ AC_CHECK_HEADERS( \
+ 	arpa/inet.h \
+-	curses.h \
++	ncurses/curses.h \
+ 	dslib.h \
+ 	errno.h \
+ 	fcntl.h \
+@@ -1506,7 +1506,7 @@
+ 	malloc.h \
+ 	math.h \
+ 	memory.h \
+-	ncurses.h \
++	ncurses/ncurses.h \
+ 	netdb.h \
+ 	netinet/in.h \
+ 	pthread.h \
+@@ -1548,7 +1548,7 @@
+ 	sys/wait.h \
+ 	syslog.h \
+ 	tcl.h \
+-	termcap.h \
++	ncurses/termcap.h \
+ 	terminfo.h \
+ 	termio.h \
+ 	termios.h \
+@@ -1614,13 +1614,13 @@
+ 		AC_DEFINE(HAVE_TERM_H, 1, Define to 1 if you have the <term.h> header file.),,
+ 		[
+ #if HAVE_NCURSES_H
+-#  include <ncurses.h>
++#  include <ncurses/ncurses.h>
+ #else
+ #  ifdef HAVE_CURSES_H
+-#    include <curses.h>
++#    include <ncurses/curses.h>
+ #  else
+ #    ifdef HAVE_TERMCAP_H
+-#      include <termcap.h>
++#      include <ncurses/termcap.h>
+ #    else
+ #      ifdef HAVE_TERMINFO_H
+ #        include <terminfo.h>
+@@ -2171,7 +2171,7 @@
+ PRELDFLAGS="$LDFLAGS"
+ LDFLAGS="$LDFLAGS $LIBPNG"
+ AC_TRY_RUN([
+-#include <png.h>
++#include <libpng/png.h>
+ main() {
+     int i = png_access_version_number();
+     return 0;
+@@ -2871,13 +2871,13 @@
+ #  include <termlib.h>
+ #else
+ #  if HAVE_NCURSES_H
+-#    include <ncurses.h>
++#    include <ncurses/ncurses.h>
+ #  else
+ #    ifdef HAVE_CURSES_H
+-#      include <curses.h>
++#      include <ncurses/curses.h>
+ #    else
+ #      ifdef HAVE_TERMCAP_H
+-#        include <termcap.h>
++#        include <ncurses/termcap.h>
+ #      else
+ #        ifdef HAVE_TERMINFO_H
+ #          include <terminfo.h>
