@@ -2,6 +2,7 @@
 # TODO 
 #	- files fixes, what is -static?
 #	- build with system libs: 
+#	- remove disabled libs from source
 #
 Summary:	BRL CAD - solid modeling system
 Summary(pl.UTF-8):	BRL CAD - system modelowania brył
@@ -12,6 +13,7 @@ License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/brlcad/%{name}-%{version}.tar.bz2
 # Source0-md5:	0b6f4fe6b3466ac5c4afac26dfa43f7d
+Patch0:		%{name}-include.patch
 URL:		http://brlcad.sourceforge.net/
 BuildRequires:	SDL-devel
 #Buildrequires:	itcl-devel
@@ -74,8 +76,10 @@ Statyczna biblioteka BRL-CAD.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__autoconf}
 %configure2_13 \
 	--disable-blt-build \
 	--disable-itcl-build \
